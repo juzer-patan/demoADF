@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from '@{pipeline().parameters.TableName}' where LastModifyTime > '@{activity('Lookup_OldWaterMarkValue').output.firstRow.OldWatermark}' and LastModifyTime <= '@{activity('Lookup_NewWatermarkValue').output.firstRow.NewWatermarkvalue}'",
+							"value": "select * from @{pipeline().parameters.TableName} where LastModifyTime > '@{activity('Lookup_OldWaterMarkValue').output.firstRow.OldWatermark}' and LastModifyTime <= '@{activity('Lookup_NewWatermarkValue').output.firstRow.NewWatermarkvalue}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
