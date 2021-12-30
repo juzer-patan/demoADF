@@ -47,7 +47,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select MAX(LastModifytime) as NewWatermarkvalue from '@{pipeline().parameters.TableName}'",
+							"value": "select MAX(LastModifytime) as NewWatermarkvalue from @{pipeline().parameters.TableName}",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -55,7 +55,13 @@
 					},
 					"dataset": {
 						"referenceName": "DS_source",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							}
+						}
 					}
 				}
 			},
