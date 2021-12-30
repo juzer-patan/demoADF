@@ -1,0 +1,36 @@
+{
+	"name": "DS_target_netflix",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_netflix_Blob",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DatasetFileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().DatasetFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@formatDateTime(utcnow(),'yyyyMMdd')",
+					"type": "Expression"
+				},
+				"container": "target"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

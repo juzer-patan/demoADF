@@ -1,0 +1,12 @@
+{
+	"name": "LS_source_SQL",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=demo-incrementalcopy.database.windows.net;initial catalog=sourcedb;user id=demo",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDM4NUVBRjEyLUI2Q0ItNDQ0Ny05NzdDLUVBRjU4MDMzMTlDMF9lZTAxYzhjYy04NjgwLTQ3YzItODA1Ny1hN2UwYzk3NjdkZWYiDQp9"
+		}
+	}
+}
