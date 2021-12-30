@@ -19,7 +19,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT TableName,WatermarkValue as OldWatermark FROM watermarktable where TableName = '@{pipeline().parameters.TableName}'",
+							"value": "SELECT TableName,WatermarkValue as OldWatermark FROM watermarktable where TableName='@{pipeline().parameters.TableName}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
