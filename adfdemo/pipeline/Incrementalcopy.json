@@ -18,7 +18,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT TableName,WatermarkValue as OldWatermark FROM watermarktable",
+						"sqlReaderQuery": {
+							"value": "SELECT TableName,WatermarkValue as OldWatermark FROM watermarktable where TableName = '@{pipeline().parameters.TableName}'",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -43,7 +46,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select MAX(LastModifytime) as NewWatermarkvalue from orders",
+						"sqlReaderQuery": {
+							"value": "select MAX(LastModifytime) as NewWatermarkvalue from '@{pipeline().parameters.TableName}'",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -82,7 +88,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from orders where LastModifyTime > '@{activity('Lookup_OldWaterMarkValue').output.firstRow.OldWatermark}' and LastModifyTime <= '@{activity('Lookup_NewWatermarkValue').output.firstRow.NewWatermarkvalue}'",
+							"value": "select * from '@{pipeline().parameters.TableName}' where LastModifyTime > '@{activity('Lookup_OldWaterMarkValue').output.firstRow.OldWatermark}' and LastModifyTime <= '@{activity('Lookup_NewWatermarkValue').output.firstRow.NewWatermarkvalue}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -155,6 +161,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"TableName": {
+				"type": "string",
+				"defaultValue": "orders"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-12-30T08:28:15Z"
 	},
