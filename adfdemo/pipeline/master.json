@@ -41,7 +41,7 @@
 				"type": "array",
 				"defaultValue": [
 					"orders",
-					"customers"
+					"product"
 				]
 			}
 		},
