@@ -115,8 +115,14 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_target_orders",
-						"type": "DatasetReference"
+						"referenceName": "DS_targetdb_mulipletables",
+						"type": "DatasetReference",
+						"parameters": {
+							"datasetName": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
