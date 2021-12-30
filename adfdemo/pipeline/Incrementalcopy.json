@@ -156,7 +156,10 @@
 							"type": "DateTime"
 						},
 						"TableName": {
-							"value": "orders",
+							"value": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}

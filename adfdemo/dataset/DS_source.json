@@ -23,7 +23,10 @@
 				"precision": 23,
 				"scale": 3
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": ""
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
