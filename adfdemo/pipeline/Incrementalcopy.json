@@ -172,8 +172,7 @@
 		],
 		"parameters": {
 			"TableName": {
-				"type": "string",
-				"defaultValue": "orders"
+				"type": "string"
 			}
 		},
 		"annotations": [],
